@@ -35,35 +35,15 @@ for (counter2 = 0; counter2 < questions.length; counter2++) {
 
     if (counter2 === questions.length - 2) {
         var fav_num;
-        counter1 = 1;
+        counter1 = 0;
 
         while (fav_num !== 79) {
             fav_num = parseInt(prompt('Can you guess my favorite number between 1 to 100?'));
-
-            if (fav_num < 30) {
-                console.log('user answer6:', fav_num);
-                alert('Sorry! You guessed too low! You can double it up.');
-                counter1++;
-            } else if (fav_num >= 30 && fav_num <= 78) {
-                console.log('user answer6:', fav_num);
-                alert('Sorry! You guessed low!');
-                counter1++;
-            } else if (fav_num > 79 && fav_num < 100) {
-                console.log('user answer6:', fav_num);
-                alert('Sorry! You guessed high! But you are close enough.');
-                counter1++;
-            } else if (fav_num >= 100) {
-                console.log('user answer6:', fav_num);
-                alert('Sorry! You guessed Too high!');
-                counter1++;
-            } else if (isNaN(fav_num) || fav_num === null) {
-                console.log('user answer6:', fav_num);
-                alert('Please enter an actual number');
-                counter1++;
-            }
+            checkGuessedNumber(fav_num);
+            counter1++;
         }
         alert('Total number of guesses: ' + counter1 + '.');
-        alert('Hi ' + userName + 'It took ' + counter1 + ' guesses until you got it ');
+        alert('Hi ' + userName + '. It took ' + counter1 + ' guesses until you got it!');
 
     } 
     
@@ -133,4 +113,23 @@ function tryAgain(qNum) {
         var tryAgain = tryAgain + " " + nextQuestion;
     }
     alert(tryAgain);
+}
+
+function checkGuessedNumber(fav_num) {
+    if (fav_num < 30) {
+        console.log('user answer6:', fav_num);
+        alert('Sorry! You guessed too low! You can double it up.');
+    } else if (fav_num >= 30 && fav_num <= 78) {
+        console.log('user answer6:', fav_num);
+        alert('Sorry! You guessed low!');
+    } else if (fav_num > 79 && fav_num < 100) {
+        console.log('user answer6:', fav_num);
+        alert('Sorry! You guessed high! But you are close enough.');
+    } else if (fav_num >= 100) {
+        console.log('user answer6:', fav_num);
+        alert('Sorry! You guessed Too high!');
+    } else if (isNaN(fav_num) || fav_num === null) {
+        console.log('user answer6:', fav_num);
+        alert('Please enter an actual number');
+    } 
 }
