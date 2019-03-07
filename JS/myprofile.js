@@ -1,138 +1,136 @@
+"use strict";
 
-var user = prompt('what is your name?');
-console.log('user name:', user);
-if (user === null) {
-    user = 'Guest';
-}
-alert('Hi there ' + user + 'I\'m going to ask you few questions.');
-var correctanswers = 0;
-var totalquestions = 0;
-var Question1 = prompt(user + ' My favorite color is blue. Please answer yes/no Or y/n');
-console.log('user answer1:', Question1);
-totalquestions++;
-if (Question1 != null && Question1 != '') {
-    if (Question1.toUpperCase() === 'Y' || Question1.toUpperCase() === 'YES') {
-        alert('You are correct. Lets move on 4 more to go');
-        correctanswers++;
-    }
-    else if (Question1.toUpperCase() === 'N' || Question1.toUpperCase() === 'NO') {
-        alert('You are wrong. Lets try another question, we have 4 more. All the best!!');
-    }
-}
-else {
-    alert('Please answer only in yes/no Or y/n. All the best!!');
+var counter1 = 0;
+var counter2 = 0;
+var retryCounter = 0;
+var correctAnsCounter = 0;
+var question1 = "My favorite color is blue. Please answer yes/no Or y/n"
+var question2 = "My favorite Car is Harrier.Please answer yes/no Or y/n"
+var question3 = "My favorite Book is HarryPotter.Please answer yes/no Or y/n";
+var question4 = "My favorite Cartoon character is Jerry.Please answer yes/no Or y/n";
+var question5 = "My favorite sport is cricket.Please answer yes/no Or y/n";
+var question6 = "What is one of my favorite birds?";
+var questions = [question1, question2, question3, question4, question5, question6];
+
+var answers = {
+    colour: "y",
+    car: "y",
+    book: "n",
+    cartoon: "y",
+    sport: "n",
+    birds: ["eagle", "kingfisher", "peacock", "parrot", "woodpecker", "swift"]
 }
 
-var Question2 = prompt(' My favorite Car is Harrier.Please answer yes/no Or y/n');
-console.log('user answer2:', Question2);
-totalquestions++;
-if (Question2.toUpperCase() === 'Y' || Question2.toUpperCase() === 'YES') {
-    alert('You are correct. Lets move on we have 3 more');
-    correctanswers++;
-}
-else if (Question2.toUpperCase() === 'N' || Question2.toUpperCase() === 'NO') {
-    alert('You are wrong. Lets try another question, we have 3 more. All the best!!');
-}
-else {
-    alert('Please answer only in yes/no Or y/n. All the best!!');
+var userName = prompt('what is your name?');
+console.log('user name:', userName);
+if (userName === null || " ") {
+    userName = 'Guest';
 }
 
-var Question3 = prompt(' My favorite Book is HarryPotter.Please answer yes/no Or y/n');
-console.log('user answer3:', Question3);
-totalquestions++;
-if (Question3.toUpperCase() === 'N' || Question3.toUpperCase() === 'NO') {
-    alert('You are correct. Lets move on we have 2 more');
-    correctanswers++;
-}
-else if (Question3.toUpperCase() === 'Y' || Question3.toUpperCase() === 'YES') {
-    alert('You are wrong. Lets try another question, we have 2 more. All the best!!');
-}
-else {
-    alert('Please answer only in yes/no Or y/n. All the best!!');
-}
-var Question4 = prompt(' My favorite Cartoon character is Jerry.Please answer yes/no Or y/n');
-console.log('user answer4:', Question4);
-totalquestions++;
-if (Question4.toUpperCase() === 'Y' || Question4.toUpperCase() === 'YES') {
-    alert('You are correct. Lets move on we have one more');
-    correctanswers++;
-}
-else if (Question4.toUpperCase() === 'N' || Question4.toUpperCase() === 'NO') {
-    alert('You are wrong. Lets try another question, we have 1 more. All the best!!');
-}
-else {
-    alert('Please answer only in yes/no Or y/n. All the best!!');
-}
+alert("Hi " + userName + ", let's play a little guessing game About Me!!.");
+for (counter2 = 0; counter2 < questions.length; counter2++) {
 
-var Question5 = prompt(' My favorite sport is cricket.Please answer yes/no Or y/n');
-console.log('user answer5:', Question5);
-totalquestions++;
-if (Question5.toUpperCase() === 'N' || Question5.toUpperCase() === 'NO') {
-    alert('You are correct. We are done with the questions. Let me provide more details about me in my profile');
-    correctanswers++;
-}
-else if (Question5.toUpperCase() === 'Y' || Question5.toUpperCase() === 'YES') {
-    alert('You are wrong. Lets try another question, Let me provide more details about me in my profile');
-}
-else {
-    alert('Please answer only in yes/no Or y/n. Let me provide more details about me in my profile');
-}
+    var guessed = prompt(questions[counter2]);
+    console.log(guessed);
 
-if (parseInt(correctanswers) > 0) {
-    alert('Hi ' + user + '! You have guessed ' + correctanswers + ' correctly out of ' + totalquestions + '.<br> ' + (correctanswers / totalquestions * 100) + ' % of your guesses are correct.');
-}
-else {
-    alert('Hi ' + user + '! Sorry, none of your guesses are correct, try again');
-}
+    if (counter2 === questions.length - 2) {
+        var fav_num;
+        counter1 = 1;
 
+        while (fav_num !== 79) {
+            fav_num = parseInt(prompt('Can you guess my favorite number between 1 to 100?'));
 
-var fav_num;
-var numtimes = 1;
+            if (fav_num < 30) {
+                console.log('user answer6:', fav_num);
+                alert('Sorry! You guessed too low! You can double it up.');
+                counter1++;
+            } else if (fav_num >= 30 && fav_num <= 78) {
+                console.log('user answer6:', fav_num);
+                alert('Sorry! You guessed low!');
+                counter1++;
+            } else if (fav_num > 79 && fav_num < 100) {
+                console.log('user answer6:', fav_num);
+                alert('Sorry! You guessed high! But you are close enough.');
+                counter1++;
+            } else if (fav_num >= 100) {
+                console.log('user answer6:', fav_num);
+                alert('Sorry! You guessed Too high!');
+                counter1++;
+            } else if (isNaN(fav_num) || fav_num === null) {
+                console.log('user answer6:', fav_num);
+                alert('Please enter an actual number');
+                counter1++;
+            }
+        }
+        alert('Total number of guesses: ' + counter1 + '.');
+        alert('Hi ' + userName + 'It took ' + counter1 + ' guesses until you got it ');
 
-while (fav_num !== 79) {
-    fav_num = parseInt(prompt('Can you guess my favorite number between 1 to 100?'));
-
-    if (fav_num < 30) {
-        console.log('user answer6:', fav_num);
-        alert('Sorry! You guessed too low! You can double it up.');
-        numtimes++;
-    } else if (fav_num >= 30 && fav_num <= 78) {
-        console.log('user answer6:', fav_num);
-        alert('Sorry! You guessed low!');
-        numtimes++;
-    } else if (fav_num > 79 && fav_num < 100) {
-        console.log('user answer6:', fav_num);
-        alert('Sorry! You guessed high! But you are close enough.');
-        numtimes++;
-    } else if (fav_num >= 100) {
-        console.log('user answer6:', fav_num);
-        alert('Sorry! You guessed Too high!');
-        numtimes++;
-    } else if (isNaN(fav_num) || fav_num === null) {
-        console.log('user answer6:', fav_num);
-        alert('Please enter an actual number');
-        numtimes++;
-    }
-}
-alert('Total number of guesses: ' + numtimes + '.');
-alert('Hi ' + user + 'It took ' + numtimes + ' guesses until you got it ');
-
-
-var birds = ["eagle", "kingfisher", "peacock", "parrot", "woodpecker", "swift"];
-var chance = 1;
-for (i = 0; i < birds.length; i++) {
-    alert('This is your guess number ' + chance + '.');
-    var fav_bird = prompt('What is one of my favorite birds?');
-    console.log('user answer7:', fav_bird);
-    if (birds.includes(fav_bird.toLowerCase())) {
-        alert('Yes, it is right!!!! You got it corretc on the ' + chance + ' chance.');
-        chance++;
-        break;
-    }
+    } 
+    
     else {
-        alert('Incorrect guess - you are running out of chances. Think!!');
-        chance++;
-    }   
+        var isCorrect = checkAnswer(counter2 + 1, guessed);
+        console.log("Is answer correct:" + isCorrect)
+        if (isCorrect === "Y") {
+            correctAnsCounter++;
+            if (counter2 < questions.length - 1) {
+                alert("You guessed it right. Let's move to the next one!")
+            } else {
+                alert("You guessed it right.")
+            }
+        } else {
+            tryAgain(counter2);
+        }
+    }
 }
-    console.log('question 8:', birds);
-    alert('Possible answers are ' + birds + '.');
+alert("You correctly guessed " + correctAnsCounter + " out of " + questions.length + ". Thanks for playing the game!");
+
+
+/* Function declarations */
+function getUserName() {
+    var name = prompt("What's your name?")
+    console.log(name);
+    return name;
+}
+
+function checkAnswer(questionNum, input) {
+    var correctAns = "N";
+
+    if (input === null || input === "") {
+        correctAns = "N";
+    } else {
+
+        if (questionNum === 1 && input.toLowerCase().substring(0, 1) === answers.colour) {
+            correctAns = "Y";
+        }
+
+        if (questionNum === 2 && input.toLowerCase().substring(0, 1) === answers.car) {
+            correctAns = "Y";
+        }
+
+        if (questionNum === 3 && input.toLowerCase().substring(0, 1) === answers.book) {
+            correctAns = "Y";
+        }
+
+        if (questionNum === 4 && input.toLowerCase().substring(0, 1) === answers.cartoon) {
+            correctAns = "Y";
+        }
+
+        if (questionNum === 5 && input.toLowerCase().substring(0, 1) === answers.sport) {
+            correctAns = "Y";
+        }
+
+        if (questionNum === 6 && answers.birds.includes(input.toLowerCase())) {
+            correctAns = "Y";
+        }
+    }
+    return correctAns;
+}
+
+function tryAgain(qNum) {
+    var tryAgain = "You guessed it wrong.";
+    var nextQuestion = "No problem, let's go for the next question."
+    if (counter2 < questions.length - 1) {
+        var tryAgain = tryAgain + " " + nextQuestion;
+    }
+    alert(tryAgain);
+}
