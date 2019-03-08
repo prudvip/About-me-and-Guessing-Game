@@ -1,0 +1,58 @@
+* {
+  box-sizing: border-box;
+}
+
+/* Add a gray background color with some padding */
+body {
+  font-family: Arial;
+  padding: 20px;
+  background: linear-gradient(to bottom, #99ff99 0%, #33cccc 100%);
+}
+
+/* Header/Blog Title */
+.header {
+  padding: 30px;
+  font-size: 50px;
+  font-family: fantasy; 
+  text-align: center;
+  background: linear-gradient(to right, #0066cc 0%, #ffff00 100%);
+}
+
+/* Create two unequal columns that floats next to each other */
+/* Left column */
+.leftcolumn {   
+  float: left;
+  width: 75%;
+  
+}
+
+/* Right column */
+.rightcolumn {
+  float: left;
+  width: 25%;
+  padding-left: 20px;
+  
+}
+
+
+/* Add a card effect for articles */
+.card {
+   background-color: #D3E788;
+   padding: 20px;
+   margin-top: 25px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Footer */
+.footer {
+  padding: 20px;
+  text-align: center;
+  background: rgb(44, 75, 8);
+  margin-top: 20px;
+}
